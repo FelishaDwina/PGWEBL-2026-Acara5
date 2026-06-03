@@ -42,35 +42,113 @@ href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 @section('content')
 <div class="container mt-4">
     <!-- Judul halaman -->
-    <h2 class="mb-3">Halaman Tabel Area</h2>
+    <h2 class="mb-3">Halaman Tabel</h2>
     <div class="card shadow">
         <div class="card-header">
-            <h4 class="mb-0">Data Polygons</h4>
+            <h4 class="mb-0">Tabel Data Point</h4>
         </div>
         <div class="card-body">
-            <table id="tabelku"
+            <table id="tabledatapoints"
             class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Area (Hectares)</th>
+                        <th>Nama</th>
+                        <th>Deskripsi</th>
+                        <th>Foto</th>
+                        <th>Tanggal Dibuat</th>
+
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($points as $p)
+                        <tr>
+                            <td>{{$no++}}</td>
+                            <td>{{$p['name']}}</td>
+                            <td>{{$p['description']}}</td>
+                            <td>
+                                <img src="{{asset('storage/images').'/'.$p['image']}}" alt="" width="200">
+                            </td>
+                            <td>{{$p['created_at']}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mt-4 shadow">
+        <div class="card-header">
+            <h4 class="mb-0">Tabel Data Polyline</h4>
+        </div>
+        <div class="card-body">
+            <table id="tabledatapolylines"
+            class="table table-bordered table-striped">
+                <thead>
                     <tr>
-                        <td>1</td>
-                        <td>Kota Baru</td>
-                        <td>Isine stadion kridosono</td>
-                        <td>3.53</td>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Deskripsi</th>
+                        <th>Foto</th>
+                        <th>Tanggal Dibuat</th>
+
                     </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($polylines as $p)
+                        <tr>
+                            <td>{{$no++}}</td>
+                            <td>{{$p['name']}}</td>
+                            <td>{{$p['description']}}</td>
+                            <td>
+                                <img src="{{asset('storage/images').'/'.$p['image']}}" alt="" width="200">
+                            </td>
+                            <td>{{$p['created_at']}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card mt-4 shadow">
+        <div class="card-header">
+            <h4 class="mb-0">Tabel Data Polygon</h4>
+        </div>
+        <div class="card-body">
+            <table id="tabledatapolygons"
+            class="table table-bordered table-striped">
+                <thead>
                     <tr>
-                        <td>2</td>
-                        <td>Alun-alun Utara</td>
-                        <td>Area ne iki</td>
-                        <td>5.28</td>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Deskripsi</th>
+                        <th>Foto</th>
+                        <th>Tanggal Dibuat</th>
+
                     </tr>
+                </thead>
+                <tbody>
+                    @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($polygons as $p)
+                        <tr>
+                            <td>{{$no++}}</td>
+                            <td>{{$p['name']}}</td>
+                            <td>{{$p['description']}}</td>
+                            <td>
+                                <img src="{{asset('storage/images').'/'.$p['image']}}" alt="" width="200">
+                            </td>
+                            <td>{{$p['created_at']}}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -81,8 +159,18 @@ href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script>
-$(document).ready(function () {
-    $('#tabelku').DataTable();
-});
+    $(document).ready(function () {
+        $('#tabledatapoints').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#tabledatapolylines').DataTable();
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#tabledatapolygons').DataTable();
+    });
 </script>
 @endsection

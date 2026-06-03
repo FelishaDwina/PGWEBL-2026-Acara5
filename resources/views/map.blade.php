@@ -214,6 +214,10 @@ var points = L.geoJSON(null, {
 
 	// onEachFeature
     onEachFeature: function (feature, layer) {
+    //route edit point
+    var routeedit = "{{route('point.edit', ':id')}}";
+    routeedit = routeedit.replace(':id', feature.properties.id);
+
     //route delete point
     var routedelete = "{{route('points.delete', ':id')}}";
     routedelete = routedelete.replace(':id', feature.properties.id);
@@ -224,10 +228,15 @@ var points = L.geoJSON(null, {
 		"Dibuat: " + feature.properties.created_at + "<br>"+
         "<img src='{{asset('storage/images')}}/"+ feature.properties.image +"' class='img-thumbnail' width='400'>"+"<br><br>"+
 
-        "<form action='"+ routedelete +"' method='post'>" +
-        '@csrf' +'@method("delete")'+
-        "<button type='submit' class='btn btn-sm btn-danger' title='Delete feature' onclick='return confirm(\"Are you sure you want to delete this feature?\")'><i class='fa-solid fa-trash-can'></i></button>"+
-        "</form>"
+        "<div class='row'>" +
+            "<div class='col-6'>" +
+                "<form action='"+ routedelete +"' method='post'>" +
+                '@csrf' +'@method("delete")'+
+                "<button type='submit' class='btn btn-sm btn-danger' title='Delete feature' onclick='return confirm(\"Are you sure you want to delete this feature?\")'><i class='fa-solid fa-trash-can'></i></button>"+
+                "</form>"+
+            "</div>" +
+        "<div class='col-6'>" +
+        "<a href='" + routeedit + "' class='btn btn-warning btn-sm' title='Edit feature'><i class='fa-solid fa-pen-to-square'></i></a>"
         ;
 
 	layer.on({
@@ -249,6 +258,10 @@ var polylines = L.geoJSON(null, {
 
 	// onEachFeature
     onEachFeature: function (feature, layer) {
+    //route edit polyline
+    var routeedit = "{{route('polyline.edit', ':id')}}";
+    routeedit = routeedit.replace(':id', feature.properties.id);
+
 	//route delete polyline
     var routedelete = "{{route('polylines.delete', ':id')}}";
     routedelete = routedelete.replace(':id', feature.properties.id);
@@ -259,10 +272,15 @@ var polylines = L.geoJSON(null, {
 		"Dibuat: " + feature.properties.created_at + "<br>"+
         "<img src='{{asset('storage/images')}}/"+ feature.properties.image +"' class='img-thumbnail' width='400'>"+"<br><br>"+
 
-        "<form action='"+ routedelete +"' method='post'>" +
-        '@csrf' +'@method("delete")'+
-        "<button type='submit' class='btn btn-sm btn-danger' title='Delete feature' onclick='return confirm(\"Are you sure you want to delete this feature?\")'><i class='fa-solid fa-trash-can'></i></button>"+
-        "</form>"
+        "<div class='row'>" +
+            "<div class='col-6'>" +
+                "<form action='"+ routedelete +"' method='post'>" +
+                '@csrf' +'@method("delete")'+
+                "<button type='submit' class='btn btn-sm btn-danger' title='Delete feature' onclick='return confirm(\"Are you sure you want to delete this feature?\")'><i class='fa-solid fa-trash-can'></i></button>"+
+                "</form>"+
+            "</div>" +
+        "<div class='col-6'>" +
+        "<a href='" + routeedit + "' class='btn btn-warning btn-sm' title='Edit feature'><i class='fa-solid fa-pen-to-square'></i></a>"
         ;
 
 	layer.on({
@@ -284,6 +302,11 @@ var polygons = L.geoJSON(null, {
 
 	// onEachFeature
     onEachFeature: function (feature, layer) {
+
+    //route edit polygon
+    var routeedit = "{{route('polygon.edit', ':id')}}";
+    routeedit = routeedit.replace(':id', feature.properties.id);
+
 	//route delete polygon
     var routedelete = "{{route('polygons.delete', ':id')}}";
     routedelete = routedelete.replace(':id', feature.properties.id);
@@ -294,10 +317,15 @@ var polygons = L.geoJSON(null, {
 		"Dibuat: " + feature.properties.created_at + "<br>"+
         "<img src='{{asset('storage/images')}}/"+ feature.properties.image +"' class='img-thumbnail' width='400'>"+"<br><br>"+
 
-        "<form action='"+ routedelete +"' method='post'>" +
-        '@csrf' +'@method("delete")'+
-        "<button type='submit' class='btn btn-sm btn-danger' title='Delete feature' onclick='return confirm(\"Are you sure you want to delete this feature?\")'><i class='fa-solid fa-trash-can'></i></button>"+
-        "</form>"
+        "<div class='row'>" +
+            "<div class='col-6'>"+
+                "<form action='"+ routedelete +"' method='post'>" +
+                '@csrf' +'@method("delete")'+
+                "<button type='submit' class='btn btn-sm btn-danger' title='Delete feature' onclick='return confirm(\"Are you sure you want to delete this feature?\")'><i class='fa-solid fa-trash-can'></i></button>"+
+                "</form>"+
+            "</div>" +
+        "<div class='col-6'>" +
+        "<a href='" + routeedit + "' class='btn btn-warning btn-sm' title='Edit feature'><i class='fa-solid fa-pen-to-square'></i></a>"
         ;
 
 	layer.on({
