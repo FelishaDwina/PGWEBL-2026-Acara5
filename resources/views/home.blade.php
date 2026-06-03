@@ -58,7 +58,7 @@ href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <div class='container mt-3'>
     <div class="row">
         <div class="col-3">
-            <div class="card text-dark" style="background-color: #FFE4E1;">
+            <div class="card">
                 <div class="card-header">
                     <h3>Jumlah Point</h3>
                 </div>
