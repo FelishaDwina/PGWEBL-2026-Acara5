@@ -112,7 +112,7 @@ map.on('draw:edited', function(e) {
 	});
 });
 
-//point layer
+//polyline layer
 var polylines = L.geoJSON(null, {
 	// Style
 
